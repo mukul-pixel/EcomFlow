@@ -13,7 +13,7 @@ FROM (
     with deduped_stage as (
         select *,
                 row_number()over(partition by product_id order by record_start_ts desc) as rnk
-        from stage_dim_product
+        from sales.stage_dim_product
     )
     select *
     from deduped_stage
